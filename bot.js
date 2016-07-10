@@ -57,10 +57,18 @@ const actions = {
   merge(sessionId, context, entities, message, cb) {
     // Retrieve the location entity and store it into a context field
     const loc = firstEntityValue(entities, 'location');
-    if (loc) {
-      context.loc = loc; // store it in context
-    }
+    const phone = firstEntityValue(entities, 'phone_number');
+    // const contact = firstEntityValue(entities, 'contact');
 
+    if (loc) {
+        context.loc = loc; // store it in context
+    }
+    if (phone) {
+        context.phone = phone; // store it in context
+    }
+    // if (contact) {
+    //     context.contact = contact; // store it in context
+    // }
     cb(context);
   },
 
